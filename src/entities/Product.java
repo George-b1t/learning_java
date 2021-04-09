@@ -8,6 +8,19 @@ public class Product {
   public double price;
   public int quantity;
 
+  public Product() {} // Default constructor (overload)
+
+  public Product(String name, double price, int quantity) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+  }
+
+  public Product(String name, double price) { // Overload: Other constructor
+    this.name = name;                         // with minus parameters
+    this.price = price;
+  }
+
   public double totalValueInStock() {
     return price * quantity;
   }
@@ -34,14 +47,16 @@ public class Product {
     Locale.setDefault(Locale.US);
     Scanner sc = new Scanner(System.in);
 
-    Product product1 = new Product();
     System.out.println("ENTER PRODUCT DATA\n");
     System.out.print("NAME: ");
-    product1.name = sc.nextLine();
+    String productName = sc.nextLine();
     System.out.print("PRICE: ");
-    product1.price = sc.nextDouble();
+    double productPrice = sc.nextDouble();
     System.out.print("QUANTITY: ");
-    product1.quantity = sc.nextInt();
+    int productQuantity = sc.nextInt();
+    Product product1 = new Product(productName,
+                                   productPrice,
+                                   productQuantity);
 
     System.out.println("\nPRODUCT DATA:\n" + product1);
 
